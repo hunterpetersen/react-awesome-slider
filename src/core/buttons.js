@@ -27,8 +27,8 @@ export default class Buttons extends React.Component {
       next: this.next,
       prev: this.prev,
     });
-    alert("BUTTONS!!!!!");
   }
+
 
   render() {
     const {
@@ -39,6 +39,7 @@ export default class Buttons extends React.Component {
       buttonContentRight,
       onNext,
       onPrev,
+      index
     } = this.props;
 
     return (
@@ -56,44 +57,43 @@ export default class Buttons extends React.Component {
           getClassName(`${rootElement}__controls--hidden`, cssModule),
         ].join(' ')}
       >
-        <button
-          ref={next => {
-            this.next = next;
-          }}
-          aria-label="next"
-          className={getClassName(`${rootElement}__next`, cssModule)}
-          onClick={onNext}
-        >
-          {organicArrows ? (
-            <span
-              className={getClassName(
-                `${rootElement}__controls__arrow-right`,
-                cssModule
-              )}
-            />
-          ) : (
-            buttonContentRight
-          )}
-        </button>
-        <button
-          ref={prev => {
-            this.prev = prev;
-          }}
-          aria-label="previous"
-          className={getClassName(`${rootElement}__prev`, cssModule)}
-          onClick={onPrev}
-        >
-          {organicArrows ? (
-            <span
-              className={getClassName(
-                `${rootElement}__controls__arrow-left`,
-                cssModule
-              )}
-            />
-          ) : (
-            buttonContentLeft
-          )}
-        </button>
+          <button
+            ref={next => {
+              this.next = next;
+            }}
+            aria-label="next"
+            className={getClassName(`${rootElement}__next`, cssModule)}
+            onClick={onNext}
+          >
+            
+              <span
+                className={getClassName(
+                  `${rootElement}__controls__arrow-right`,
+                  cssModule
+                )}
+                style={{display: index == 3 ? "none" : "block"}}
+              />
+          </button> 
+
+          {/* <button
+            ref={prev => {
+              this.prev = prev;
+            }}
+            aria-label="previous"
+            className={getClassName(`${rootElement}__prev`, cssModule)}
+            onClick={onPrev}
+
+          >
+            
+              <span
+                className={getClassName(
+                  `${rootElement}__controls__arrow-left`,
+                  cssModule
+                )}
+                style={{display: index == 0 ? "none" : "block"}}
+              />
+            
+          </button> */}
       </div>
     );
   }

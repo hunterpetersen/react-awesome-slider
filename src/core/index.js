@@ -815,6 +815,9 @@ export default class AwesomeSlider extends React.Component {
   }
 
   clickNext = () => {
+    // let sliderStep = localStorage.getItem('sliderStep');
+    // localStorage.setItem('sliderStep', ++sliderStep);
+
     const next = this.index === null ? 0 : this.index + 1;
     this.onTransitionRequest('next', next);
     this.goTo({
@@ -824,12 +827,16 @@ export default class AwesomeSlider extends React.Component {
   };
 
   clickPrev = () => {
+    // let sliderStep = localStorage.getItem('sliderStep');
+    // localStorage.setItem('sliderStep', --sliderStep);
+
     const prev = this.index - 1;
     this.onTransitionRequest('prev', prev);
     this.goTo({
       index: prev,
       direction: false,
     });
+
   };
 
   touchStart = event => {
@@ -999,6 +1006,7 @@ export default class AwesomeSlider extends React.Component {
               organicArrows={organicArrows}
               buttonContentLeft={buttonContentLeft}
               buttonContentRight={buttonContentRight}
+              index={this.index}
             />
           )}
           {customContent}
