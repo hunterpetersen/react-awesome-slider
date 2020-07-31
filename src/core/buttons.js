@@ -27,6 +27,7 @@ export default class Buttons extends React.Component {
       next: this.next,
       prev: this.prev,
     });
+    alert("BUTTONS!!!!!");
   }
 
   render() {
