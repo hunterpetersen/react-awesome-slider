@@ -47,7 +47,7 @@ export default class Bullets extends React.Component {
         <button
           key={`bullet-${index}`}
           data-index={index}
-          onClick={this.bulletClick}
+          // onClick={this.bulletClick}
           className={className}
         >
           {index}

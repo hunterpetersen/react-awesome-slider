@@ -859,6 +859,10 @@ export default class AwesomeSlider extends React.Component {
     const active = this[this.active];
     const loader = this[this.loader];
     const direction = !(diff > 0);
+    if (!direction || this.index == 3)
+    {
+      return;
+    }
     const abs = Math.abs(diff);
     if (this.touchEnabled === false) {
       if (abs > 20) {
@@ -870,7 +874,7 @@ export default class AwesomeSlider extends React.Component {
     if (abs >= 10) {
       if (this.loading === false) {
         this.goTo({
-          index: direction ? this.index + 1 : this.index - 1,
+          index: this.index + 1,
           direction,
           touch: true,
         });
